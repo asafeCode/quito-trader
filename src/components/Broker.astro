@@ -1,0 +1,129 @@
+---
+import { messages } from "../i18n";
+import Section from "./Section.astro";
+
+const t = messages.broker;
+---
+
+<Section
+  id="corretora"
+  className="relative overflow-hidden bg-bg-deep/50"
+  ledger={true}
+>
+  <div
+    aria-hidden="true"
+    class="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top,rgba(31,123,255,0.18),transparent_60%)]"
+  >
+  </div>
+  <div
+    aria-hidden="true"
+    class="pointer-events-none absolute inset-0 -z-10 opacity-30 [mask-image:linear-gradient(180deg,black,transparent_70%)]"
+    style="background-image: url('/matrix-bg.jpg'); background-size: cover; background-position: center;"
+  >
+  </div>
+
+  <div
+    class="grid items-center gap-12 rounded-3xl border border-accent/30 bg-gradient-to-br from-surface/80 to-surface-2/80 p-6 backdrop-blur-md sm:p-10 lg:grid-cols-12 lg:gap-14"
+  >
+    <div class="lg:col-span-5" data-reveal>
+      <div
+        class="relative overflow-hidden rounded-2xl border border-accent/40 shadow-glow"
+        data-parallax="0.06"
+      >
+        <div
+          aria-hidden="true"
+          class="absolute -inset-1 -z-10 rounded-2xl bg-gradient-to-br from-accent/40 via-cyan/20 to-transparent blur-xl"
+        >
+        </div>
+        <img
+          src="/quito-stockity-chair.png"
+          alt={`${t.titleB} — ${messages.site.name}`}
+          class="aspect-[4/5] w-full object-cover"
+          loading="lazy"
+          width="800"
+          height="1000"
+        />
+      </div>
+    </div>
+
+    <div class="lg:col-span-7" data-reveal>
+      <div class="flex items-center gap-3">
+        <img
+          src="/stockity-logo.png"
+          alt={t.titleB}
+          class="h-9 w-auto object-contain"
+          loading="lazy"
+          width="160"
+        />
+        <span class="chip-accent">{t.chip}</span>
+      </div>
+
+      <h2
+        class="mt-6 text-balance font-display text-4xl font-bold leading-[1.05] tracking-tighter text-ink sm:text-5xl lg:text-6xl"
+        data-reveal-text
+      >
+        {t.titleA} <span class="text-accent text-glow">{t.titleB}</span>{" "}
+        {t.titleC}
+        <br />
+        <span class="bg-gradient-to-r from-cyan to-accent bg-clip-text text-transparent">
+          {t.titleD}
+        </span>
+      </h2>
+      <p class="mt-5 max-w-xl text-pretty text-base leading-relaxed text-muted sm:text-lg">
+        {t.body}
+      </p>
+
+      <ul class="mt-6 grid gap-3 sm:grid-cols-2" data-reveal-stagger>
+        {
+          t.bullets.map((b) => (
+            <li class="flex items-start gap-3 text-sm text-ink/90">
+              <span class="mt-1 grid h-5 w-5 shrink-0 place-items-center rounded-full border border-accent/40 bg-accent/15 text-[10px] text-accent">
+                ✓
+              </span>
+              {b}
+            </li>
+          ))
+        }
+      </ul>
+
+      <div class="mt-8 flex flex-wrap items-center gap-4" data-reveal>
+        <a
+          href={messages.links.stockity}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn-primary-lg animate-pulse-glow"
+          data-magnetic=""
+          data-cursor-hover=""
+        >
+          <span>{t.cta}</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path
+              d="M5 12h14M13 6l6 6-6 6"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </a>
+        <span class="text-xs text-muted">{t.note}</span>
+      </div>
+
+      <div class="mt-4 flex flex-wrap items-center gap-3 text-xs text-muted" data-reveal>
+        <span class="inline-flex items-center gap-1.5">
+          <span class="inline-block h-1.5 w-1.5 rounded-full bg-accent"></span>
+          {messages.cta.microcopy}
+        </span>
+        <span class="hidden h-3 w-px bg-line sm:block"></span>
+        <span class="inline-flex items-center gap-1.5">
+          <span aria-hidden="true">🔒</span>
+          {messages.badges.ssl}
+        </span>
+        <span class="inline-flex items-center gap-1.5">
+          <span aria-hidden="true">✓</span>
+          {messages.badges.regulated}
+        </span>
+      </div>
+    </div>
+  </div>
+</Section>

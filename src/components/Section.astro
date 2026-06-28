@@ -1,0 +1,41 @@
+---
+export interface Props {
+  id?: string;
+  className?: string;
+  containerClass?: string;
+  variant?: "default" | "surface" | "outline";
+  ledger?: boolean;
+  reveal?: boolean;
+}
+
+const {
+  id,
+  className = "",
+  containerClass = "",
+  variant = "default",
+  ledger = false,
+  reveal = false,
+} = Astro.props;
+
+const variantClass =
+  variant === "surface"
+    ? "bg-surface/40"
+    : variant === "outline"
+    ? ""
+    : "";
+---
+
+<section
+  id={id}
+  class:list={[
+    "relative isolate py-20 sm:py-24 lg:py-28",
+    variantClass,
+    ledger ? "ledger" : "",
+    className,
+  ]}
+  data-reveal={reveal ? "" : null}
+>
+  <div class:list={["container-page", containerClass]}>
+    <slot />
+  </div>
+</section>

@@ -1,0 +1,51 @@
+---
+import { messages } from "../i18n";
+
+const t = messages.trustBar;
+const items = [
+  t.badge,
+  t.partner,
+  t.suffix,
+  t.badge,
+  t.partner,
+  t.suffix,
+  t.badge,
+  t.partner,
+  t.suffix,
+  t.badge,
+  t.partner,
+  t.suffix,
+];
+---
+
+<section
+  class="relative border-y border-line/60 bg-surface/40 py-4 backdrop-blur-sm"
+  aria-label="Trust bar"
+>
+  <div class="mask-fade-x flex overflow-hidden">
+    <div class="flex shrink-0 items-center gap-12 pr-12 animate-marquee">
+      {
+        items.map((item, i) => (
+          <div class="flex shrink-0 items-center gap-3 font-display text-sm font-medium uppercase tracking-[0.22em] text-muted/80">
+            {i % 3 === 1 ? (
+              <span class="font-bold text-ink">{item}</span>
+            ) : (
+              <span>{item}</span>
+            )}
+            {i % 3 === 1 ? (
+              <img
+                src="/stockity-logo.png"
+                alt="Stockity"
+                class="h-5 w-auto object-contain"
+                loading="lazy"
+                width="80"
+              />
+            ) : (
+              <span aria-hidden="true" class="inline-block h-1 w-1 rounded-full bg-accent"></span>
+            )}
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

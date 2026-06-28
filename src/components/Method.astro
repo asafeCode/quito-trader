@@ -1,0 +1,56 @@
+---
+import { messages } from "../i18n";
+import Section from "./Section.astro";
+
+const t = messages.method;
+---
+
+<Section
+  id="metodo"
+  className="relative overflow-hidden"
+  containerClass="relative"
+>
+  <div
+    aria-hidden="true"
+    class="pointer-events-none absolute inset-0 -z-10 opacity-[0.10] [mask-image:radial-gradient(60%_55%_at_50%_50%,black,transparent_85%)]"
+    style="background-image: url('/candles-bg.jpg'); background-size: cover; background-position: center;"
+  >
+  </div>
+
+  <div class="max-w-2xl" data-reveal>
+    <span class="chip">{t.chip}</span>
+    <h2
+      class="mt-5 text-balance font-display text-4xl font-bold leading-tight tracking-tighter text-ink sm:text-5xl lg:text-6xl"
+      data-reveal-text
+    >
+      {t.titleA} <span class="text-accent text-glow">{t.titleB}</span> {t.titleC}
+      <br />
+      {t.titleD}
+    </h2>
+    <p class="mt-4 max-w-xl text-pretty text-base leading-relaxed text-muted sm:text-lg">
+      {t.subtitle}
+    </p>
+  </div>
+
+  <ol class="mt-12 grid gap-5 sm:grid-cols-2" data-reveal-stagger>
+    {
+      t.pillars.map((p) => (
+        <li class="card-elevated group relative overflow-hidden p-7">
+          <span
+            aria-hidden="true"
+            class="absolute right-5 top-5 font-display text-4xl font-extrabold text-line transition-colors group-hover:text-accent/40"
+          >
+            {p.n}
+          </span>
+          <span class="block h-1 w-12 rounded-full bg-gradient-to-r from-accent to-cyan"></span>
+          <h3 class="mt-6 font-display text-2xl font-bold text-ink">
+            {p.title}
+          </h3>
+          <p class="mt-3 text-sm leading-relaxed text-muted sm:text-base">
+            {p.desc}
+          </p>
+        </li>
+      ))
+    }
+  </ol>
+</Section>

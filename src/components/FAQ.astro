@@ -1,0 +1,27 @@
+---
+import { messages } from "../i18n";
+import Section from "./Section.astro";
+import FAQItem from "./FAQItem.astro";
+
+const t = messages.faq;
+---
+
+<Section id="faq" className="relative">
+  <div class="max-w-2xl" data-reveal>
+    <span class="chip">{t.chip}</span>
+    <h2
+      class="mt-5 text-balance font-display text-4xl font-bold leading-tight tracking-tighter text-ink sm:text-5xl lg:text-6xl"
+      data-reveal-text
+    >
+      {t.title}
+    </h2>
+  </div>
+
+  <div class="mt-10 grid gap-3" data-reveal-stagger>
+    {
+      t.items.map((f) => (
+        <FAQItem q={f.q} a={f.a} />
+      ))
+    }
+  </div>
+</Section>

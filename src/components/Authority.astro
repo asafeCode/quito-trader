@@ -1,0 +1,111 @@
+---
+import { messages } from "../i18n";
+import Section from "./Section.astro";
+
+const t = messages.authority;
+---
+
+<Section id="sobre" className="bg-surface/30" ledger={true}>
+  <div class="grid items-center gap-12 lg:grid-cols-12 lg:gap-16">
+    <div class="relative lg:col-span-5" data-reveal>
+      <div
+        aria-hidden="true"
+        class="absolute -inset-4 -z-10 rounded-3xl bg-gradient-to-tr from-accent/20 via-transparent to-cyan/10 blur-2xl"
+      >
+      </div>
+      <div
+        class="relative overflow-hidden rounded-3xl border border-line bg-gradient-to-b from-surface-2 to-surface"
+        data-parallax="0.05"
+      >
+        <img
+          src="/quito-chair.png"
+          alt={messages.accessibility.altQuito}
+          class="aspect-[4/5] w-full object-cover"
+          loading="lazy"
+          width="800"
+          height="1000"
+        />
+      </div>
+      <div
+        class="absolute -bottom-5 left-6 right-6 hidden rounded-xl border border-line bg-surface/90 p-4 backdrop-blur-md sm:block"
+      >
+        <p class="text-[10px] uppercase tracking-[0.22em] text-muted">
+          {t.overlayLabel}
+        </p>
+        <p class="mt-1 font-display text-sm font-semibold text-ink">
+          {t.overlayText}
+        </p>
+      </div>
+    </div>
+
+    <div class="lg:col-span-7">
+      <span class="chip" data-reveal>{t.chip}</span>
+      <h2
+        class="mt-5 text-balance font-display text-4xl font-bold leading-tight tracking-tighter text-ink sm:text-5xl lg:text-6xl"
+        data-reveal-text
+      >
+        {t.titleA} <span class="text-accent text-glow">{t.titleB}</span>
+      </h2>
+      <p
+        class="mt-5 max-w-2xl text-pretty text-base leading-relaxed text-muted sm:text-lg"
+        data-reveal
+      >
+        {t.body}
+      </p>
+
+      <ul
+        class="mt-10 grid grid-cols-3 gap-4 border-y border-line py-6"
+        data-reveal-stagger
+      >
+        <li>
+          <p class="font-display text-4xl font-extrabold text-ink sm:text-5xl">
+            <span data-counter={t.years.value} data-suffix={t.years.suffix}>
+              {t.years.value}{t.years.suffix}
+            </span>
+          </p>
+          <p class="mt-1 text-xs uppercase tracking-[0.22em] text-muted">
+            {t.years.label}
+          </p>
+        </li>
+        <li>
+          <p class="font-display text-4xl font-extrabold text-ink sm:text-5xl">
+            <span data-counter={t.markets.value} data-suffix={t.markets.suffix}>
+              {t.markets.value}{t.markets.suffix}
+            </span>
+          </p>
+          <p class="mt-1 text-xs uppercase tracking-[0.22em] text-muted">
+            {t.markets.label}
+          </p>
+        </li>
+        <li>
+          <p class="font-display text-4xl font-extrabold text-ink sm:text-5xl">
+            <span data-counter={t.hours.value} data-suffix={t.hours.suffix}>
+              {t.hours.value}{t.hours.suffix}
+            </span>
+          </p>
+          <p class="mt-1 text-xs uppercase tracking-[0.22em] text-muted">
+            {t.hours.label}
+          </p>
+        </li>
+      </ul>
+
+      <ul class="mt-8 grid gap-4 sm:grid-cols-2" data-reveal-stagger>
+        {
+          t.bullets.map((b) => (
+            <li class="card group flex gap-4">
+              <span class="mt-1 inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-accent/30 bg-accent/10 font-display text-sm font-bold text-accent transition-colors group-hover:bg-accent group-hover:text-bg">
+                {b.badge}
+              </span>
+              <div>
+                <p class="font-display text-base font-semibold text-ink">
+                  {b.title}
+                </p>
+                <p class="mt-1 text-sm text-muted">{b.desc}</p>
+              </div>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+</Section>

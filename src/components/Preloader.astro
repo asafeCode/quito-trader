@@ -1,0 +1,39 @@
+---
+import { messages } from "../i18n";
+---
+
+<div
+  id="preloader"
+  class="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-bg-deep"
+  aria-label={messages.preloader.loading}
+>
+  <div
+    aria-hidden="true"
+    class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(31,123,255,0.18),transparent_60%)]"
+  >
+  </div>
+
+  <div class="relative z-10 flex flex-col items-center gap-8">
+    <img
+      src="/logo.png"
+      alt={messages.site.name}
+      class="h-16 w-16 animate-pulse object-contain"
+      width="64"
+      height="64"
+    />
+
+    <div class="flex flex-col items-center gap-2">
+      <div class="h-1 w-64 overflow-hidden rounded-full bg-line">
+        <div
+          id="preloader-bar"
+          class="h-full w-0 rounded-full bg-gradient-to-r from-accent to-cyan"
+          style="width: 0%"
+        ></div>
+      </div>
+      <div class="flex items-center gap-2 font-mono text-xs uppercase tracking-[0.22em] text-muted">
+        <span id="preloader-num">0</span><span>{messages.preloader.percent}</span>
+        <span class="ml-2 hidden sm:inline">{messages.preloader.loading}</span>
+      </div>
+    </div>
+  </div>
+</div>

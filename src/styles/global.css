@@ -1,0 +1,162 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: auto;
+  }
+
+  html.lenis,
+  html.lenis body {
+    height: auto;
+  }
+
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+
+  .lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+  }
+
+  .lenis.lenis-stopped {
+    overflow: hidden;
+  }
+
+  body {
+    @apply bg-bg text-ink font-sans antialiased;
+    background-image:
+      radial-gradient(1400px 700px at 85% -10%, rgba(31, 123, 255, 0.18), transparent 60%),
+      radial-gradient(1000px 600px at 0% 25%, rgba(0, 212, 255, 0.08), transparent 60%),
+      radial-gradient(1200px 800px at 50% 100%, rgba(31, 123, 255, 0.06), transparent 60%);
+    background-attachment: fixed;
+  }
+
+  ::selection {
+    @apply bg-accent text-white;
+  }
+
+  h1, h2, h3, h4, h5 {
+    @apply font-display tracking-tighter;
+  }
+
+  h1 {
+    @apply tracking-tightest;
+  }
+
+  /* Reveal initial state (prevent FOUC) */
+  .reveal,
+  .reveal-text,
+  .reveal-up,
+  .reveal-stagger > * {
+    opacity: 0;
+  }
+
+  /* Honor reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+      scroll-behavior: auto !important;
+    }
+    .reveal, .reveal-text, .reveal-up, .reveal-stagger > * {
+      opacity: 1 !important;
+      transform: none !important;
+    }
+  }
+}
+
+@layer components {
+  .container-page {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .hairline {
+    @apply h-px w-full bg-line;
+  }
+
+  .ledger {
+    position: relative;
+  }
+
+  .ledger::before {
+    content: "";
+    position: absolute;
+    inset-inline: 0;
+    top: 0;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(31, 123, 255, 0.55) 30%,
+      rgba(31, 123, 255, 0.55) 70%,
+      transparent 100%
+    );
+  }
+
+  .btn-primary {
+    @apply relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-full bg-accent px-7 py-3.5 text-sm font-bold text-white shadow-[0_10px_30px_-10px_rgba(31,123,255,0.7)] transition-all duration-300 hover:scale-[1.03] hover:bg-accent-soft hover:shadow-[0_18px_40px_-10px_rgba(31,123,255,0.85)] focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan focus-visible:ring-offset-2 focus-visible:ring-offset-bg;
+  }
+
+  .btn-primary-lg {
+    @apply btn-primary px-10 py-5 text-base;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-line bg-surface/60 px-6 py-3 text-sm font-semibold text-ink transition-colors duration-200 hover:border-accent/60 hover:text-accent focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg;
+  }
+
+  .chip {
+    @apply inline-flex items-center gap-2 rounded-full border border-line bg-surface/70 px-3 py-1 text-xs font-medium uppercase tracking-[0.18em] text-muted;
+  }
+
+  .chip-accent {
+    @apply chip border-accent/40 bg-accent/10 text-accent;
+  }
+
+  .card {
+    @apply rounded-2xl border border-line bg-surface/70 p-6 backdrop-blur-sm transition-all duration-300 hover:border-accent/30;
+  }
+
+  .card-elevated {
+    @apply rounded-2xl border border-line bg-gradient-to-b from-surface-2 to-surface p-6 transition-all duration-300;
+  }
+
+  .card-elevated:hover {
+    @apply border-accent/40;
+    box-shadow: 0 0 60px -15px rgba(31, 123, 255, 0.25);
+  }
+
+  .number {
+    @apply font-display font-bold tracking-tightest tabular-nums;
+  }
+
+  .text-glow {
+    text-shadow: 0 0 32px rgba(31, 123, 255, 0.5);
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .text-pretty {
+    text-wrap: pretty;
+  }
+
+  .mask-fade-x {
+    -webkit-mask-image: linear-gradient(90deg, transparent 0, black 5%, black 95%, transparent 100%);
+    mask-image: linear-gradient(90deg, transparent 0, black 5%, black 95%, transparent 100%);
+  }
+
+  .mask-fade-r {
+    -webkit-mask-image: linear-gradient(90deg, black 60%, transparent 100%);
+    mask-image: linear-gradient(90deg, black 60%, transparent 100%);
+  }
+
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+}

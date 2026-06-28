@@ -1,0 +1,100 @@
+---
+import { messages } from "../i18n";
+
+const t = messages.footer;
+const year = new Date().getFullYear();
+---
+
+<footer class="relative border-t border-line/60 bg-bg-deep/80">
+  <div
+    aria-hidden="true"
+    class="pointer-events-none absolute inset-x-0 top-0 h-px bg-ledger-fade"
+  >
+  </div>
+  <div class="container-page py-12 sm:py-16">
+    <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
+      <div class="lg:col-span-2">
+        <a href="#top" class="inline-flex items-center gap-3" aria-label={messages.site.name}>
+          <img
+            src="/logo.png"
+            alt={messages.site.name}
+            class="h-10 w-10 object-contain"
+            loading="lazy"
+            width="40"
+            height="40"
+          />
+          <span class="font-display text-base font-bold tracking-tighter text-ink">
+            QUITOTRADER
+          </span>
+        </a>
+        <p class="mt-4 max-w-md text-sm leading-relaxed text-muted">
+          {t.description}
+        </p>
+        <div class="mt-6 flex flex-wrap items-center gap-3">
+          <a
+            href={messages.links.stockity}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 rounded-full border border-line bg-surface px-3 py-1.5 text-xs text-muted transition-colors hover:border-accent/60 hover:text-ink"
+          >
+            <img
+              src="/stockity-logo.png"
+              alt={messages.accessibility.altStockity}
+              class="h-4 w-auto object-contain"
+              loading="lazy"
+              width="60"
+            />
+            <span>Corretora parceira</span>
+          </a>
+        </div>
+      </div>
+
+      <div>
+        <p class="text-[10px] uppercase tracking-[0.22em] text-muted">
+          {t.navHeading}
+        </p>
+        <ul class="mt-4 space-y-2 text-sm text-ink/90">
+          <li><a href="#sobre" class="transition-colors hover:text-accent">{messages.nav.sobre}</a></li>
+          <li><a href="#metodo" class="transition-colors hover:text-accent">{messages.nav.metodo}</a></li>
+          <li><a href="#resultados" class="transition-colors hover:text-accent">{messages.nav.resultados}</a></li>
+          <li><a href="#faq" class="transition-colors hover:text-accent">{messages.faq.title}</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <p class="text-[10px] uppercase tracking-[0.22em] text-muted">
+          {t.contactHeading}
+        </p>
+        <ul class="mt-4 space-y-2 text-sm text-ink/90">
+          <li>
+            <a
+              href={messages.links.linktree}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="transition-colors hover:text-accent"
+            >
+              {t.links.whatsapp}
+            </a>
+          </li>
+          <li>
+            <a
+              href={messages.links.stockity}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="transition-colors hover:text-accent"
+            >
+              {t.links.stockity}
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mt-10 border-t border-line pt-6">
+      <p class="text-xs leading-relaxed text-muted">{t.disclaimer}</p>
+      <p class="mt-4 text-xs text-muted">
+        &copy; {year} {messages.site.name}. {t.rights}
+      </p>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,273 @@
+---
+import "../styles/global.css";
+
+export interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "Quito Trader — Opere na Stockity com o método Price Action Raiz",
+  description = "Mentoria e treinamento em Price Action Raiz com Quito Trader. +10 anos operando Mini Índice, Mini Dólar, Forex, Cripto e Opções. Método, gestão de risco e disciplina na Stockity.",
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#050810" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="pt_BR" />
+    <link rel="icon" type="image/png" href="/logo.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
+    />
+    <title>{title}</title>
+  </head>
+  <body class="overflow-x-hidden">
+    <slot />
+  </body>
+</html>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  import Lenis from "lenis";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  /* ----- Lenis smooth scroll ----- */
+  const lenis = new Lenis({
+    duration: 1.1,
+    easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+    smoothWheel: true,
+  });
+
+  function raf(time: number) {
+    lenis.raf(time);
+    requestAnimationFrame(raf);
+  }
+  requestAnimationFrame(raf);
+
+  ScrollTrigger.scrollerProxy(document.body, {
+    scrollTop(value?: number) {
+      if (value !== undefined) {
+        lenis.scrollTo(value, { immediate: true });
+      }
+      return window.scrollY;
+    },
+    getBoundingClientRect() {
+      return { top: 0, left: 0, width: window.innerWidth, height: window.innerHeight };
+    },
+  });
+
+  /* ----- Preloader ----- */
+  const preloader = document.getElementById("preloader");
+  const preloaderBar = document.getElementById("preloader-bar");
+  const preloaderNum = document.getElementById("preloader-num");
+  let progress = 0;
+  const target = 100;
+  const duration = 1200;
+  const start = performance.now();
+
+  function easeOutCubic(t: number) {
+    return 1 - Math.pow(1 - t, 3);
+  }
+
+  function tickPreloader(now: number) {
+    const elapsed = now - start;
+    const t = Math.min(1, elapsed / duration);
+    progress = easeOutCubic(t) * target;
+    if (preloaderBar) (preloaderBar as HTMLElement).style.width = progress + "%";
+    if (preloaderNum) (preloaderNum as HTMLElement).textContent = Math.round(progress).toString();
+    if (t < 1) {
+      requestAnimationFrame(tickPreloader);
+    } else {
+      finishPreloader();
+    }
+  }
+  requestAnimationFrame(tickPreloader);
+
+  function finishPreloader() {
+    if (!preloader) return;
+    const tl = gsap.timeline({ onComplete: () => preloader.remove() });
+    tl.to(preloader, { yPercent: -100, duration: 0.9, ease: "power3.inOut" });
+  }
+
+  /* ----- Reveal on scroll (global) ----- */
+  const reveals = document.querySelectorAll<HTMLElement>("[data-reveal]");
+  reveals.forEach((el) => {
+    gsap.fromTo(
+      el,
+      { y: 32, opacity: 0 },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 0.9,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: el,
+          scroller: document.body,
+          start: "top 88%",
+        },
+      }
+    );
+  });
+
+  const revealTexts = document.querySelectorAll<HTMLElement>("[data-reveal-text]");
+  revealTexts.forEach((el) => {
+    const html = el.innerHTML;
+    const text = el.textContent ?? "";
+    el.innerHTML = text
+      .split(/(\s+)/)
+      .map((part) => {
+        if (part.trim() === "") return part;
+        return `<span class="inline-block overflow-hidden align-bottom"><span class="word inline-block">${part}</span></span>`;
+      })
+      .join("");
+    const words = el.querySelectorAll<HTMLElement>(".word");
+    gsap.fromTo(
+      words,
+      { yPercent: 110, opacity: 0 },
+      {
+        yPercent: 0,
+        opacity: 1,
+        duration: 0.7,
+        ease: "power3.out",
+        stagger: 0.04,
+        scrollTrigger: {
+          trigger: el,
+          scroller: document.body,
+          start: "top 85%",
+        },
+        onStart: () => {
+          el.innerHTML = html;
+        },
+      }
+    );
+  });
+
+  const staggers = document.querySelectorAll<HTMLElement>("[data-reveal-stagger]");
+  staggers.forEach((parent) => {
+    const children = parent.querySelectorAll<HTMLElement>(":scope > *");
+    gsap.fromTo(
+      children,
+      { y: 28, opacity: 0 },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 0.7,
+        ease: "power3.out",
+        stagger: 0.1,
+        scrollTrigger: {
+          trigger: parent,
+          scroller: document.body,
+          start: "top 85%",
+        },
+      }
+    );
+  });
+
+  /* ----- Counters ----- */
+  const counters = document.querySelectorAll<HTMLElement>("[data-counter]");
+  counters.forEach((el) => {
+    const target = parseFloat(el.getAttribute("data-counter") ?? "0");
+    const suffix = el.getAttribute("data-suffix") ?? "";
+    const obj = { v: 0 };
+    gsap.to(obj, {
+      v: target,
+      duration: 2,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: el,
+        scroller: document.body,
+        start: "top 90%",
+      },
+      onUpdate: () => {
+        const isInt = Number.isInteger(target);
+        el.textContent =
+          (isInt ? Math.round(obj.v).toString() : obj.v.toFixed(1)) + suffix;
+      },
+    });
+  });
+
+  /* ----- Parallax (data-parallax="0.2") ----- */
+  const parallaxes = document.querySelectorAll<HTMLElement>("[data-parallax]");
+  parallaxes.forEach((el) => {
+    const strength = parseFloat(el.getAttribute("data-parallax") ?? "0.15");
+    gsap.fromTo(
+      el,
+      { yPercent: -strength * 30 },
+      {
+        yPercent: strength * 30,
+        ease: "none",
+        scrollTrigger: {
+          trigger: el,
+          scroller: document.body,
+          start: "top bottom",
+          end: "bottom top",
+          scrub: true,
+        },
+      }
+    );
+  });
+
+  /* ----- Magnetic buttons ----- */
+  const magneticEls = document.querySelectorAll<HTMLElement>("[data-magnetic]");
+  magneticEls.forEach((el) => {
+    const strength = 0.35;
+    const onMove = (e: MouseEvent) => {
+      const rect = el.getBoundingClientRect();
+      const x = e.clientX - rect.left - rect.width / 2;
+      const y = e.clientY - rect.top - rect.height / 2;
+      gsap.to(el, { x: x * strength, y: y * strength, duration: 0.5, ease: "power3.out" });
+    };
+    const onLeave = () => gsap.to(el, { x: 0, y: 0, duration: 0.7, ease: "elastic.out(1, 0.4)" });
+    el.addEventListener("mousemove", onMove);
+    el.addEventListener("mouseleave", onLeave);
+  });
+
+  /* ----- Custom cursor ----- */
+  const cursor = document.getElementById("cursor-dot");
+  const ring = document.getElementById("cursor-ring");
+  if (cursor && ring && window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+    document.documentElement.classList.add("has-cursor");
+    const xTo = gsap.quickTo(cursor, "x", { duration: 0.2, ease: "power3.out" });
+    const yTo = gsap.quickTo(cursor, "y", { duration: 0.2, ease: "power3.out" });
+    const xToR = gsap.quickTo(ring, "x", { duration: 0.5, ease: "power3.out" });
+    const yToR = gsap.quickTo(ring, "y", { duration: 0.5, ease: "power3.out" });
+
+    window.addEventListener("mousemove", (e) => {
+      xTo(e.clientX);
+      yTo(e.clientY);
+      xToR(e.clientX);
+      yToR(e.clientY);
+    });
+
+    document.addEventListener("mouseover", (e) => {
+      const target = e.target as HTMLElement;
+      if (target.closest("a, button, [data-cursor-hover]")) {
+        gsap.to([cursor, ring], { scale: 2.2, opacity: 0.6, duration: 0.3 });
+      }
+    });
+    document.addEventListener("mouseout", (e) => {
+      const target = e.target as HTMLElement;
+      if (target.closest("a, button, [data-cursor-hover]")) {
+        gsap.to([cursor, ring], { scale: 1, opacity: 1, duration: 0.3 });
+      }
+    });
+  }
+
+  /* ----- Refresh ScrollTrigger on load ----- */
+  window.addEventListener("load", () => {
+    ScrollTrigger.refresh();
+  });
+</script>

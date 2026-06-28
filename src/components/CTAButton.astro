@@ -1,0 +1,74 @@
+---
+import { messages } from "../i18n";
+
+export interface Props {
+  to?: "stockity" | "whatsapp";
+  href?: string;
+  label?: string;
+  short?: boolean;
+  variant?: "primary" | "ghost";
+  size?: "md" | "lg";
+  magnetic?: boolean;
+}
+
+const {
+  to = "stockity",
+  href,
+  label,
+  short = false,
+  variant = "primary",
+  size = "md",
+  magnetic = false,
+} = Astro.props;
+
+const resolvedHref =
+  href ?? (to === "whatsapp" ? messages.links.linktree : messages.links.stockity);
+
+const resolvedLabel =
+  label ??
+  (to === "whatsapp"
+    ? short
+      ? messages.cta.shortSecondaryLabel
+      : messages.cta.secondaryLabel
+    : short
+    ? messages.cta.shortPrimaryLabel
+    : size === "lg"
+    ? messages.cta.primaryLabelLg
+    : messages.cta.primaryLabel);
+
+const className = [
+  variant === "primary"
+    ? size === "lg"
+      ? "btn-primary-lg"
+      : "btn-primary"
+    : "btn-ghost",
+]
+  .filter(Boolean)
+  .join(" ");
+---
+
+<a
+  href={resolvedHref}
+  target="_blank"
+  rel="noopener noreferrer"
+  class={className}
+  data-magnetic={magnetic ? "" : null}
+  data-cursor-hover=""
+>
+  <span>{resolvedLabel}</span>
+  <svg
+    width="14"
+    height="14"
+    viewBox="0 0 24 24"
+    fill="none"
+    aria-hidden="true"
+  >
+    <path
+      d="M5 12h14M13 6l6 6-6 6"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+  </svg>
+</a>
