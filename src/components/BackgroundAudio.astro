@@ -19,7 +19,7 @@
   type="button"
   aria-label="Ativar som de fundo"
   aria-pressed="false"
-  class="fixed bottom-5 left-5 z-20 hidden h-12 w-12 items-center justify-center rounded-full border border-accent/30 bg-bg/85 text-ink shadow-glow backdrop-blur-md transition-all hover:scale-105 hover:border-accent/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg lg:flex"
+  class="hidden"
 >
   <svg
     id="icon-muted"
@@ -79,24 +79,11 @@
 </button>
 
 {/* Badge sutil — indica que o som está mudo, some quando ativado */}
-<span
-  id="audio-hint"
-  class="pointer-events-none fixed bottom-5 left-20 z-20 hidden -translate-y-1/2 items-center gap-1.5 rounded-full bg-bg/80 px-2.5 py-1 text-[10px] font-medium uppercase tracking-[0.15em] text-muted backdrop-blur-md lg:flex"
-  aria-hidden="true"
->
-  <span class="relative flex h-1.5 w-1.5">
-    <span class="absolute inset-0 animate-ping rounded-full bg-accent/60"></span>
-    <span class="relative inline-flex h-1.5 w-1.5 rounded-full bg-accent"></span>
-  </span>
-  Clique para o som
-</span>
-
 <script>
   const audio = document.getElementById("bg-audio") as HTMLAudioElement | null;
   const btn = document.getElementById("audio-toggle") as HTMLButtonElement | null;
   const iconMuted = document.getElementById("icon-muted");
   const iconPlaying = document.getElementById("icon-playing");
-  const hintEl = document.getElementById("audio-hint") as HTMLSpanElement | null;
 
   if (audio && btn && iconMuted && iconPlaying) {
     audio.volume = 0.10;
@@ -107,7 +94,6 @@
       iconPlaying.classList.remove("hidden");
       btn.setAttribute("aria-label", "Silenciar som de fundo");
       btn.setAttribute("aria-pressed", "true");
-      if (hintEl) hintEl.classList.add("hidden");
     };
     const showMuted = () => {
       iconMuted.classList.remove("hidden");
@@ -115,14 +101,9 @@
       btn.setAttribute("aria-label", "Ativar som de fundo");
       btn.setAttribute("aria-pressed", "false");
     };
-    const showHint = () => {
-      if (hintEl && audio.muted) hintEl.classList.remove("hidden");
-    };
-
     audio.play().then(showPlaying).catch(() => {
       audio.muted = true;
       showMuted();
-      showHint();
     });
 
     const tryUnmute = () => {
@@ -150,7 +131,6 @@
       } else {
         audio.muted = true;
         showMuted();
-        showHint();
       }
     });
   }
