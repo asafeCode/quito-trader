@@ -139,15 +139,15 @@
   }
 
   .btn-whatsapp {
-    @apply mx-auto inline-flex w-[82%] max-w-[18.6rem] items-center gap-3 rounded-[1.05rem] border border-line/80 bg-[rgba(5,8,16,0.72)] px-3.5 py-2 text-left text-ink shadow-[0_20px_52px_-34px_rgba(31,123,255,0.75)] backdrop-blur-md transition-all duration-300 hover:border-[#25D366]/70 hover:bg-[#25D366]/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#25D366] focus-visible:ring-offset-2 focus-visible:ring-offset-bg min-[390px]:gap-3.5 sm:w-full sm:max-w-none sm:rounded-[1.7rem] sm:px-7 sm:py-5 lg:flex-1 lg:px-5 lg:py-3.5;
+    @apply mx-auto inline-flex w-[82%] max-w-[18.6rem] items-center gap-3 rounded-[1.05rem] border border-line/80 bg-[rgba(5,8,16,0.72)] px-3.5 py-2 text-left text-ink shadow-[0_20px_52px_-34px_rgba(31,123,255,0.75)] backdrop-blur-md transition-all duration-300 hover:border-[#25D366]/70 hover:bg-[#25D366]/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#25D366] focus-visible:ring-offset-2 focus-visible:ring-offset-bg min-[390px]:gap-3.5 sm:w-[82%] sm:max-w-[18.6rem] sm:rounded-[1.05rem] sm:px-3.5 sm:py-2 lg:flex-1 lg:w-full lg:max-w-none lg:rounded-[1.7rem] lg:px-5 lg:py-3.5;
   }
 
   .btn-stockity {
-    @apply flex w-full items-center gap-3 rounded-[1.25rem] border border-cyan/80 bg-gradient-to-r from-[#0935ff] via-accent to-[#00a7ff] px-4 py-2.5 text-left text-white shadow-[0_0_0_1px_rgba(0,212,255,0.42),0_22px_70px_-18px_rgba(31,123,255,0.9)] transition-all duration-300 hover:scale-[1.015] hover:shadow-[0_0_0_1px_rgba(0,212,255,0.65),0_28px_82px_-18px_rgba(31,123,255,1)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan focus-visible:ring-offset-2 focus-visible:ring-offset-bg min-[390px]:gap-4 min-[390px]:px-5 sm:rounded-[1.7rem] sm:px-7 sm:py-6 lg:py-3.5;
+    @apply flex w-full items-center gap-3 rounded-[1.25rem] border border-cyan/80 bg-gradient-to-r from-[#0935ff] via-accent to-[#00a7ff] px-4 py-2.5 text-left text-white shadow-[0_0_0_1px_rgba(0,212,255,0.42),0_22px_70px_-18px_rgba(31,123,255,0.9)] transition-all duration-300 hover:scale-[1.015] hover:shadow-[0_0_0_1px_rgba(0,212,255,0.65),0_28px_82px_-18px_rgba(31,123,255,1)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan focus-visible:ring-offset-2 focus-visible:ring-offset-bg min-[390px]:gap-4 min-[390px]:px-5 sm:rounded-[1.25rem] sm:px-5 sm:py-2.5 lg:rounded-[1.7rem] lg:py-3.5;
   }
 
   .hero-shell {
-    @apply relative isolate h-[calc(100svh-6rem)] min-h-[560px] overflow-hidden bg-bg-deep sm:min-h-[700px] lg:h-[calc(100svh-6rem)] lg:min-h-[680px];
+    @apply relative isolate h-[calc(100svh-6rem)] min-h-[560px] overflow-hidden bg-bg-deep sm:min-h-[588px] lg:h-[calc(100svh-6rem)] lg:min-h-[680px];
   }
 
   .hero-market-bg {
@@ -198,23 +198,23 @@
   }
 
   .hero-title-1 {
-    @apply block text-[1.34rem] leading-[0.94] text-white/95 sm:text-5xl lg:text-4xl xl:text-5xl;
+    @apply block text-[1.34rem] leading-[0.94] text-white/95 sm:text-[1.42rem] md:text-[1.52rem] lg:text-4xl xl:text-5xl;
   }
 
   .hero-title-2 {
-    @apply my-1 block text-[1.92rem] leading-[0.88] text-accent text-glow sm:text-7xl lg:my-3 lg:text-6xl xl:text-7xl;
+    @apply my-1 block text-[1.92rem] leading-[0.88] text-accent text-glow sm:text-[2.08rem] md:text-[2.22rem] lg:my-3 lg:text-6xl xl:text-7xl;
   }
 
   .hero-title-3 {
-    @apply mt-4 block max-w-[8.9rem] text-[0.78rem] font-medium leading-[1.22] text-white/90 sm:max-w-[17rem] sm:text-2xl lg:max-w-[15rem] lg:text-xl xl:text-2xl;
+    @apply mt-4 block max-w-[8.9rem] text-[0.78rem] font-medium leading-[1.22] text-white/90 sm:max-w-[9.8rem] sm:text-[0.82rem] md:text-[0.88rem] lg:max-w-[15rem] lg:text-xl xl:text-2xl;
   }
 
   .hero-title-4 {
-    @apply mt-2 block text-[0.78rem] font-medium leading-[1.1] text-white/90 sm:text-2xl lg:text-xl xl:text-2xl;
+    @apply mt-2 block text-[0.78rem] font-medium leading-[1.1] text-white/90 sm:text-[0.82rem] md:text-[0.88rem] lg:text-xl xl:text-2xl;
   }
 
   .hero-rule {
-    @apply mt-6 h-1 w-20 rounded-full bg-accent shadow-[0_0_24px_rgba(31,123,255,0.85)] sm:mt-9 sm:w-28;
+    @apply mt-6 h-1 w-20 rounded-full bg-accent shadow-[0_0_24px_rgba(31,123,255,0.85)] sm:mt-6 sm:w-24 lg:mt-9 lg:w-28;
   }
 
   .hero-rule-right {
@@ -222,11 +222,11 @@
   }
 
   .hero-motivational {
-    @apply font-display text-[1.08rem] font-extrabold uppercase leading-[1.08] tracking-tighter text-white/90 sm:text-4xl lg:text-3xl xl:text-4xl;
+    @apply font-display text-[1.08rem] font-extrabold uppercase leading-[1.08] tracking-tighter text-white/90 sm:text-[1.16rem] md:text-[1.22rem] lg:text-3xl xl:text-4xl;
   }
 
   .hero-motivational span + span {
-    @apply mt-3 sm:mt-6;
+    @apply mt-3 sm:mt-3 lg:mt-6;
   }
 
   .hero-motivational-sub {
@@ -234,7 +234,7 @@
   }
 
   .hero-photo {
-    @apply relative z-10 mx-auto block h-[clamp(27.5rem,54svh,31rem)] w-auto max-w-none translate-x-0 translate-y-[clamp(2.8rem,7svh,5.7rem)] object-contain object-bottom drop-shadow-[0_34px_70px_rgba(31,123,255,0.54)] sm:h-[72svh] sm:min-h-[640px] sm:translate-y-40 lg:h-[72svh] lg:min-h-[600px] lg:translate-y-7 xl:h-[74svh] xl:min-h-[650px] xl:translate-y-7;
+    @apply relative z-10 mx-auto block h-[clamp(27.5rem,54svh,31rem)] w-auto max-w-none translate-x-0 translate-y-[clamp(2.8rem,7svh,5.7rem)] object-contain object-bottom drop-shadow-[0_34px_70px_rgba(31,123,255,0.54)] sm:h-[clamp(29rem,58svh,33rem)] sm:min-h-0 sm:translate-y-[clamp(1.2rem,4svh,4rem)] lg:h-[72svh] lg:min-h-[600px] lg:translate-y-7 xl:h-[74svh] xl:min-h-[650px] xl:translate-y-7;
   }
 
   .hero-glow {
@@ -250,7 +250,7 @@
   }
 
   .hero-cta-icon {
-    @apply flex h-[3.25rem] w-[3.25rem] shrink-0 items-center justify-center rounded-2xl min-[390px]:h-14 min-[390px]:w-14 sm:h-20 sm:w-20 lg:h-16 lg:w-16;
+    @apply flex h-[3.25rem] w-[3.25rem] shrink-0 items-center justify-center rounded-2xl min-[390px]:h-14 min-[390px]:w-14 sm:h-14 sm:w-14 lg:h-16 lg:w-16;
   }
 
   .hero-cta-icon-stockity {
@@ -262,7 +262,7 @@
   }
 
   .btn-whatsapp .hero-cta-icon {
-    @apply h-12 w-12 min-[390px]:h-[3.25rem] min-[390px]:w-[3.25rem] sm:h-20 sm:w-20 lg:h-14 lg:w-14;
+    @apply h-12 w-12 min-[390px]:h-[3.25rem] min-[390px]:w-[3.25rem] sm:h-[3.25rem] sm:w-[3.25rem] lg:h-14 lg:w-14;
   }
 
   .hero-cta-arrow {
