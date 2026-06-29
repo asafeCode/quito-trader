@@ -194,14 +194,14 @@ export const ptBR = {
         role: "Aluno · operações ao vivo",
         quote:
           "100% de assertividade top. As entradas do Quito pelo TikTok ao vivo mudaram minha forma de ler o gráfico.",
-        image: "/depoimento-1.png",
+        image: "/depoimento-1.webp",
       },
       {
         name: "Lucas",
         role: "Aluno · mentoria",
         quote:
           "Surreal Quito, vc é brabo demais. Hoje tenho critério para entrar e parar de operar no impulso.",
-        image: "/depoimento-2.png",
+        image: "/depoimento-2.webp",
       },
     ],
   },

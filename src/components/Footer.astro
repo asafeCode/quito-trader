@@ -16,7 +16,7 @@ const year = new Date().getFullYear();
       <div class="lg:col-span-2">
         <a href="#top" class="inline-flex items-center gap-3" aria-label={messages.site.name}>
           <img
-            src="/logo.png"
+            src="/logo.webp"
             alt={messages.site.name}
             class="h-10 w-10 object-contain"
             loading="lazy"
@@ -38,13 +38,13 @@ const year = new Date().getFullYear();
             class="inline-flex items-center gap-2 rounded-full border border-line bg-surface px-3 py-1.5 text-xs text-muted transition-colors hover:border-accent/60 hover:text-ink"
           >
             <img
-              src="/stockity-logo.png"
+              src="/stockity.png"
               alt={messages.accessibility.altStockity}
               class="h-4 w-auto object-contain"
               loading="lazy"
               width="60"
             />
-            <span>Corretora parceira</span>
+            <span>{t.links.stockity}</span>
           </a>
         </div>
       </div>
@@ -54,10 +54,10 @@ const year = new Date().getFullYear();
           {t.navHeading}
         </p>
         <ul class="mt-4 space-y-2 text-sm text-ink/90">
-          <li><a href="#sobre" class="transition-colors hover:text-accent">{messages.nav.sobre}</a></li>
-          <li><a href="#metodo" class="transition-colors hover:text-accent">{messages.nav.metodo}</a></li>
-          <li><a href="#resultados" class="transition-colors hover:text-accent">{messages.nav.resultados}</a></li>
-          <li><a href="#faq" class="transition-colors hover:text-accent">{messages.faq.title}</a></li>
+          <li><a href="#sobre" class="transition-colors hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg-deep rounded">{messages.nav.sobre}</a></li>
+          <li><a href="#metodo" class="transition-colors hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg-deep rounded">{messages.nav.metodo}</a></li>
+          <li><a href="#resultados" class="transition-colors hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg-deep rounded">{messages.nav.resultados}</a></li>
+          <li><a href="#faq" class="transition-colors hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg-deep rounded">{messages.faq.title}</a></li>
         </ul>
       </div>
 

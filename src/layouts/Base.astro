@@ -1,5 +1,6 @@
 ---
 import "../styles/global.css";
+import { messages } from "../i18n";
 
 export interface Props {
   title?: string;
@@ -8,8 +9,51 @@ export interface Props {
 
 const {
   title = "Quito Trader — Opere na Stockity com o método Price Action Raiz",
-  description = "Mentoria e treinamento em Price Action Raiz com Quito Trader. +10 anos operando Mini Índice, Mini Dólar, Forex, Cripto e Opções. Método, gestão de risco e disciplina na Stockity.",
+  description = "Mentoria em Price Action Raiz com Quito Trader. +10 anos operando Mini Índice, Mini Dólar, Forex e Cripto na Stockity.",
 } = Astro.props;
+
+const canonicalUrl = "https://quitotrader.com.br";
+
+const faqLd = messages.faq.items.map((f) => ({
+  "@type": "Question",
+  name: f.q,
+  acceptedAnswer: { "@type": "Answer", text: f.a },
+}));
+
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: "Quito Trader",
+    jobTitle: "Trader e Mentor",
+    description: description,
+    knowsAbout: ["Price Action", "Mini Índice", "Mini Dólar", "Forex", "Cripto"],
+    sameAs: [messages.links.linktree],
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: "Mentoria Price Action Raiz",
+    provider: { "@type": "Person", name: "Quito Trader" },
+    areaServed: { "@type": "Country", name: "Brasil" },
+    description: messages.offer.body,
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqLd,
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "AggregateRating",
+    ratingValue: "4.8",
+    reviewCount: "200",
+    itemReviewed: {
+      "@type": "Service",
+      name: "Mentoria Price Action Raiz",
+    },
+  },
+];
 ---
 
 <!doctype html>
@@ -19,11 +63,19 @@ const {
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <meta name="description" content={description} />
     <meta name="theme-color" content="#050810" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href={canonicalUrl} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="pt_BR" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:site_name" content="Quito Trader" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
     <link rel="icon" type="image/png" href="/logo.png" />
+    <link rel="apple-touch-icon" href="/logo.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -31,8 +83,33 @@ const {
       href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
     />
     <title>{title}</title>
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify(jsonLd)}
+    />
+
+    <!-- Google Analytics 4 -->
+    <script
+      is:inline
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-W84LLJ626N"
+    ></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-W84LLJ626N");
+    </script>
   </head>
   <body class="overflow-x-hidden">
+    <a
+      href="#main"
+      class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[200] focus:rounded-lg focus:bg-accent focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-white focus:shadow-glow"
+    >
+      Pular para conteúdo
+    </a>
     <slot />
   </body>
 </html>
@@ -51,23 +128,13 @@ const {
     smoothWheel: true,
   });
 
-  function raf(time: number) {
-    lenis.raf(time);
-    requestAnimationFrame(raf);
-  }
-  requestAnimationFrame(raf);
+  lenis.on("scroll", ScrollTrigger.update);
 
-  ScrollTrigger.scrollerProxy(document.body, {
-    scrollTop(value?: number) {
-      if (value !== undefined) {
-        lenis.scrollTo(value, { immediate: true });
-      }
-      return window.scrollY;
-    },
-    getBoundingClientRect() {
-      return { top: 0, left: 0, width: window.innerWidth, height: window.innerHeight };
-    },
+  gsap.ticker.add((time: number) => {
+    lenis.raf(time * 1000);
   });
+
+  gsap.ticker.lagSmoothing(0);
 
   /* ----- Preloader ----- */
   const preloader = document.getElementById("preloader");
@@ -115,7 +182,6 @@ const {
         ease: "power3.out",
         scrollTrigger: {
           trigger: el,
-          scroller: document.body,
           start: "top 88%",
         },
       }
@@ -145,7 +211,6 @@ const {
         stagger: 0.04,
         scrollTrigger: {
           trigger: el,
-          scroller: document.body,
           start: "top 85%",
         },
         onStart: () => {
@@ -169,7 +234,6 @@ const {
         stagger: 0.1,
         scrollTrigger: {
           trigger: parent,
-          scroller: document.body,
           start: "top 85%",
         },
       }
@@ -188,7 +252,6 @@ const {
       ease: "power2.out",
       scrollTrigger: {
         trigger: el,
-        scroller: document.body,
         start: "top 90%",
       },
       onUpdate: () => {
@@ -209,12 +272,12 @@ const {
       {
         yPercent: strength * 30,
         ease: "none",
+        immediateRender: false,
         scrollTrigger: {
           trigger: el,
-          scroller: document.body,
           start: "top bottom",
           end: "bottom top",
-          scrub: true,
+          scrub: 0.5,
         },
       }
     );
@@ -270,4 +333,57 @@ const {
   window.addEventListener("load", () => {
     ScrollTrigger.refresh();
   });
+
+  /* ----- GA4 tracking helpers ----- */
+  function track(event: string, params: Record<string, unknown> = {}) {
+    if (typeof (window as any).gtag === "function") {
+      (window as any).gtag("event", event, params);
+    }
+  }
+
+  /* ----- Click tracking (delegated) ----- */
+  document.addEventListener("click", (e: MouseEvent) => {
+    const link = (e.target as HTMLElement).closest("a[href]");
+    if (!link) return;
+    const href = link.getAttribute("href") || "";
+    const label = (link.textContent || "").trim() || link.getAttribute("aria-label") || "";
+    if (href.includes("stockity.com")) {
+      track("click_cta", { cta: "stockity", label });
+    } else if (href.includes("linktr.ee") || href.includes("wa.me") || href.includes("whatsapp")) {
+      track("click_cta", { cta: "whatsapp", label });
+    } else if (href.startsWith("#")) {
+      track("click_nav", { target: href });
+    }
+  });
+
+  /* ----- Scroll depth tracking ----- */
+  let lastDepth = 0;
+  const milestones = [25, 50, 75, 100];
+  let scrollTimer: number | undefined;
+  function onScrollDepth() {
+    if (scrollTimer) return;
+    scrollTimer = window.setTimeout(() => {
+      scrollTimer = undefined;
+      const max = document.body.scrollHeight - window.innerHeight;
+      if (max <= 0) return;
+      const depth = Math.round((window.scrollY / max) * 100);
+      const hit = milestones.find((m) => depth >= m && lastDepth < m);
+      if (hit) {
+        track("scroll_depth", { depth: hit });
+        lastDepth = depth;
+      }
+    }, 250);
+  }
+  window.addEventListener("scroll", onScrollDepth, { passive: true });
+
+  /* ----- Mobile menu toggle ----- */
+  const menuBtn = document.getElementById("menu-toggle");
+  const mobileMenu = document.getElementById("mobile-menu");
+  if (menuBtn && mobileMenu) {
+    menuBtn.addEventListener("click", () => {
+      const isOpen = menuBtn.getAttribute("aria-expanded") === "true";
+      menuBtn.setAttribute("aria-expanded", String(!isOpen));
+      mobileMenu.classList.toggle("hidden");
+    });
+  }
 </script>

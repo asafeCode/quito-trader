@@ -6,7 +6,7 @@ const t = messages.nav;
 ---
 
 <header
-  class="fixed inset-x-0 top-0 z-50 border-b border-line/40 bg-bg/60 backdrop-blur-xl"
+  class="fixed inset-x-0 top-0 z-50 border-b border-line/40 bg-bg/80 backdrop-blur-md"
 >
   <nav
     class="container-page flex h-16 items-center justify-between gap-6"
@@ -18,7 +18,7 @@ const t = messages.nav;
       aria-label={`${messages.site.name} — ${t.accessibilityHome}`}
     >
       <img
-        src="/logo.png"
+        src="/logo.webp"
         alt={messages.site.name}
         width="40"
         height="40"
@@ -39,7 +39,7 @@ const t = messages.nav;
       <li>
         <a
           href="#sobre"
-          class="text-sm text-muted transition-colors hover:text-ink"
+          class="text-sm text-muted transition-colors hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
         >
           {t.sobre}
         </a>
@@ -47,7 +47,7 @@ const t = messages.nav;
       <li>
         <a
           href="#metodo"
-          class="text-sm text-muted transition-colors hover:text-ink"
+          class="text-sm text-muted transition-colors hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
         >
           {t.metodo}
         </a>
@@ -55,7 +55,7 @@ const t = messages.nav;
       <li>
         <a
           href="#resultados"
-          class="text-sm text-muted transition-colors hover:text-ink"
+          class="text-sm text-muted transition-colors hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
         >
           {t.resultados}
         </a>
@@ -67,19 +67,66 @@ const t = messages.nav;
         href={messages.links.stockity}
         target="_blank"
         rel="noopener noreferrer"
-        class="hidden items-center gap-2 rounded-full border border-line bg-surface/80 px-3 py-1.5 text-xs text-muted transition-colors hover:border-accent/60 hover:text-ink lg:flex"
-        aria-label="Stockity"
+        class="hidden items-center gap-2 rounded-full border border-line bg-surface/80 px-3 py-1.5 text-xs text-muted transition-colors hover:border-accent/60 hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg lg:flex"
+        aria-label={messages.accessibility.altStockity}
       >
         <img
-          src="/stockity-logo.png"
+          src="/stockity.png"
           alt={messages.accessibility.altStockity}
           class="h-5 w-auto object-contain"
           loading="lazy"
-          width="80"
+          width="60"
         />
         <span class="font-medium">{t.parceria}</span>
       </a>
       <CTAButton short />
+
+      {/* Menu hamburger (mobile) */}
+      <button
+        id="menu-toggle"
+        type="button"
+        class="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-line bg-surface/60 text-ink md:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
+        aria-label="Abrir menu"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+      >
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+        </svg>
+      </button>
     </div>
   </nav>
+
+  {/* Menu mobile (dropdown) */}
+  <div
+    id="mobile-menu"
+    class="hidden border-t border-line/40 bg-bg/95 md:hidden"
+  >
+    <nav class="container-page flex flex-col gap-1 py-4" aria-label="Menu mobile">
+      <a
+        href="#sobre"
+        class="rounded-lg px-3 py-2.5 text-sm text-muted transition-colors hover:bg-surface hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+      >
+        {t.sobre}
+      </a>
+      <a
+        href="#metodo"
+        class="rounded-lg px-3 py-2.5 text-sm text-muted transition-colors hover:bg-surface hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+      >
+        {t.metodo}
+      </a>
+      <a
+        href="#resultados"
+        class="rounded-lg px-3 py-2.5 text-sm text-muted transition-colors hover:bg-surface hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+      >
+        {t.resultados}
+      </a>
+      <a
+        href="#faq"
+        class="rounded-lg px-3 py-2.5 text-sm text-muted transition-colors hover:bg-surface hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+      >
+        {messages.faq.title}
+      </a>
+    </nav>
+  </div>
 </header>

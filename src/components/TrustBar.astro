@@ -20,7 +20,7 @@ const items = [
 
 <section
   class="relative border-y border-line/60 bg-surface/40 py-4 backdrop-blur-sm"
-  aria-label="Trust bar"
+  aria-label={messages.trustBar.partner}
 >
   <div class="mask-fade-x flex overflow-hidden">
     <div class="flex shrink-0 items-center gap-12 pr-12 animate-marquee">
@@ -34,11 +34,11 @@ const items = [
             )}
             {i % 3 === 1 ? (
               <img
-                src="/stockity-logo.png"
-                alt="Stockity"
+                src="/stockity.png"
+                alt={messages.accessibility.altStockity}
                 class="h-5 w-auto object-contain"
                 loading="lazy"
-                width="80"
+                width="60"
               />
             ) : (
               <span aria-hidden="true" class="inline-block h-1 w-1 rounded-full bg-accent"></span>
