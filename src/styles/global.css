@@ -7,29 +7,28 @@
     scroll-behavior: auto;
   }
 
-  html.lenis,
-  html.lenis body {
-    height: auto;
+  html,
+  body {
+    overflow-x: hidden;
+    overscroll-behavior-x: none;
+    touch-action: manipulation;
+  }
+
+  body {
+    @apply bg-bg text-ink font-sans antialiased;
+    overflow-x: hidden;
+    background-image:
+      radial-gradient(1400px 700px at 85% -10%, rgba(31, 123, 255, 0.18), transparent 60%),
+      radial-gradient(1000px 600px at 0% 25%, rgba(0, 212, 255, 0.08), transparent 60%),
+      radial-gradient(1200px 800px at 50% 100%, rgba(31, 123, 255, 0.06), transparent 60%);
   }
 
   .lenis.lenis-smooth {
     scroll-behavior: auto !important;
   }
 
-  .lenis.lenis-smooth [data-lenis-prevent] {
-    overscroll-behavior: contain;
-  }
-
-  .lenis.lenis-stopped {
+  .lenis-stopped {
     overflow: hidden;
-  }
-
-  body {
-    @apply bg-bg text-ink font-sans antialiased;
-    background-image:
-      radial-gradient(1400px 700px at 85% -10%, rgba(31, 123, 255, 0.18), transparent 60%),
-      radial-gradient(1000px 600px at 0% 25%, rgba(0, 212, 255, 0.08), transparent 60%),
-      radial-gradient(1200px 800px at 50% 100%, rgba(31, 123, 255, 0.06), transparent 60%);
   }
 
   ::selection {
@@ -157,5 +156,14 @@
 
   .perspective-1000 {
     perspective: 1000px;
+  }
+
+  @keyframes scroll-cue {
+    0%, 100% { transform: translateY(0); opacity: 0.5; }
+    50% { transform: translateY(6px); opacity: 1; }
+  }
+
+  .animate-scroll-cue {
+    animation: scroll-cue 1.8s ease-in-out infinite;
   }
 }

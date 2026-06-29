@@ -136,39 +136,6 @@ const jsonLd = [
 
   gsap.ticker.lagSmoothing(0);
 
-  /* ----- Preloader ----- */
-  const preloader = document.getElementById("preloader");
-  const preloaderBar = document.getElementById("preloader-bar");
-  const preloaderNum = document.getElementById("preloader-num");
-  let progress = 0;
-  const target = 100;
-  const duration = 1200;
-  const start = performance.now();
-
-  function easeOutCubic(t: number) {
-    return 1 - Math.pow(1 - t, 3);
-  }
-
-  function tickPreloader(now: number) {
-    const elapsed = now - start;
-    const t = Math.min(1, elapsed / duration);
-    progress = easeOutCubic(t) * target;
-    if (preloaderBar) (preloaderBar as HTMLElement).style.width = progress + "%";
-    if (preloaderNum) (preloaderNum as HTMLElement).textContent = Math.round(progress).toString();
-    if (t < 1) {
-      requestAnimationFrame(tickPreloader);
-    } else {
-      finishPreloader();
-    }
-  }
-  requestAnimationFrame(tickPreloader);
-
-  function finishPreloader() {
-    if (!preloader) return;
-    const tl = gsap.timeline({ onComplete: () => preloader.remove() });
-    tl.to(preloader, { yPercent: -100, duration: 0.9, ease: "power3.inOut" });
-  }
-
   /* ----- Reveal on scroll (global) ----- */
   const reveals = document.querySelectorAll<HTMLElement>("[data-reveal]");
   reveals.forEach((el) => {
@@ -384,6 +351,20 @@ const jsonLd = [
       const isOpen = menuBtn.getAttribute("aria-expanded") === "true";
       menuBtn.setAttribute("aria-expanded", String(!isOpen));
       mobileMenu.classList.toggle("hidden");
+    });
+  }
+
+  /* ----- Hero scroll cue (esconder ao rolar) ----- */
+  const scrollCue = document.querySelector<HTMLElement>("[data-scroll-cue]");
+  if (scrollCue) {
+    gsap.to(scrollCue, {
+      opacity: 0,
+      scrollTrigger: {
+        trigger: "section#top",
+        start: "top top-=15%",
+        end: "top top-=45%",
+        scrub: true,
+      },
     });
   }
 </script>

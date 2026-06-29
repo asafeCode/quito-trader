@@ -6,6 +6,7 @@ export interface Props {
   variant?: "default" | "surface" | "outline";
   ledger?: boolean;
   reveal?: boolean;
+  snap?: boolean;
 }
 
 const {
@@ -15,20 +16,24 @@ const {
   variant = "default",
   ledger = false,
   reveal = false,
+  snap = false,
 } = Astro.props;
 
 const variantClass =
   variant === "surface"
     ? "bg-surface/40"
     : variant === "outline"
-    ? ""
-    : "";
+      ? ""
+      : "";
 ---
 
 <section
   id={id}
   class:list={[
     "relative isolate py-20 sm:py-24 lg:py-28",
+    snap
+      ? "snap-start min-h-[calc(100svh-4rem)] flex flex-col justify-center overflow-y-auto"
+      : "",
     variantClass,
     ledger ? "ledger" : "",
     className,
