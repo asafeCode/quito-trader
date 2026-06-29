@@ -43,7 +43,6 @@
     @apply tracking-tightest;
   }
 
-  /* Reveal initial state (prevent FOUC) */
   .reveal,
   .reveal-text,
   .reveal-up,
@@ -51,7 +50,6 @@
     opacity: 0;
   }
 
-  /* Honor reduced motion */
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {
       animation-duration: 0.001ms !important;
@@ -59,6 +57,7 @@
       transition-duration: 0.001ms !important;
       scroll-behavior: auto !important;
     }
+
     .reveal, .reveal-text, .reveal-up, .reveal-stagger > * {
       opacity: 1 !important;
       transform: none !important;
@@ -134,12 +133,154 @@
   .text-glow {
     text-shadow: 0 0 32px rgba(31, 123, 255, 0.5);
   }
+
+  .text-glow-cyan {
+    text-shadow: 0 0 24px rgba(0, 212, 255, 0.55);
+  }
+
+  .btn-whatsapp {
+    @apply inline-flex w-full items-center gap-4 rounded-[1.35rem] border border-line/80 bg-[rgba(5,8,16,0.72)] px-5 py-4 text-left text-ink shadow-[0_20px_52px_-34px_rgba(31,123,255,0.75)] backdrop-blur-md transition-all duration-300 hover:border-[#25D366]/70 hover:bg-[#25D366]/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#25D366] focus-visible:ring-offset-2 focus-visible:ring-offset-bg sm:rounded-[1.7rem] sm:px-7 sm:py-5;
+  }
+
+  .btn-stockity {
+    @apply flex w-full items-center gap-4 rounded-[1.35rem] border border-cyan/80 bg-gradient-to-r from-[#0935ff] via-accent to-[#00a7ff] px-5 py-4 text-left text-white shadow-[0_0_0_1px_rgba(0,212,255,0.42),0_22px_70px_-18px_rgba(31,123,255,0.9)] transition-all duration-300 hover:scale-[1.015] hover:shadow-[0_0_0_1px_rgba(0,212,255,0.65),0_28px_82px_-18px_rgba(31,123,255,1)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan focus-visible:ring-offset-2 focus-visible:ring-offset-bg sm:rounded-[1.7rem] sm:px-7 sm:py-6;
+  }
+
+  .hero-shell {
+    @apply relative isolate min-h-[calc(100svh-6rem)] overflow-hidden bg-bg-deep lg:min-h-[calc(100svh-6rem)];
+  }
+
+  .hero-market-bg {
+    @apply pointer-events-none absolute inset-0 -z-10 bg-cover bg-top opacity-[0.48];
+    filter: saturate(1.22) contrast(1.14);
+  }
+
+  .hero-blue-wash {
+    @apply pointer-events-none absolute inset-0 -z-10;
+    background:
+      radial-gradient(420px 520px at 50% 35%, rgba(31, 123, 255, 0.24), transparent 66%),
+      radial-gradient(360px 420px at 18% 32%, rgba(0, 212, 255, 0.05), transparent 70%),
+      linear-gradient(180deg, rgba(2, 4, 10, 0.1) 0%, rgba(2, 4, 10, 0.02) 38%, rgba(2, 4, 10, 0.54) 100%);
+  }
+
+  .hero-vignette {
+    @apply pointer-events-none absolute inset-0 -z-10;
+    background:
+      radial-gradient(300px 520px at 50% 48%, rgba(2, 4, 10, 0.66) 0%, rgba(2, 4, 10, 0.44) 42%, transparent 72%),
+      linear-gradient(90deg, rgba(2, 4, 10, 0.62) 0%, transparent 18%, transparent 80%, rgba(2, 4, 10, 0.62) 100%),
+      radial-gradient(circle at 50% 42%, transparent 0%, rgba(2, 4, 10, 0.18) 70%, rgba(2, 4, 10, 0.78) 100%);
+  }
+
+  .hero-grid {
+    @apply container-page relative grid min-h-[calc(100svh-6rem)] grid-cols-[0.92fr_1.1fr_0.98fr] grid-rows-[minmax(475px,0.96fr)_auto] items-center gap-x-1 pb-8 pt-3 sm:grid-rows-[minmax(610px,1fr)_auto] sm:gap-x-4 sm:pb-12 lg:min-h-[calc(100svh-6rem)] lg:grid-cols-[0.82fr_1.1fr_0.82fr] lg:grid-rows-[minmax(560px,1fr)_auto] lg:gap-x-8 lg:pb-10 lg:pt-2 xl:gap-x-12;
+  }
+
+  .hero-col-text {
+    @apply relative z-20 col-start-1 row-start-1 self-start pt-24 text-left sm:pt-24 lg:self-center lg:pt-0;
+  }
+
+  .hero-col-photo {
+    @apply pointer-events-none relative z-10 col-start-1 col-end-4 row-start-1 flex h-full items-end justify-center self-end overflow-visible;
+  }
+
+  .hero-col-cta {
+    @apply relative z-20 col-start-3 row-start-1 self-start pt-24 text-left sm:pt-24 lg:self-center lg:pt-0;
+  }
+
+  .hero-cta-row {
+    @apply relative z-30 col-start-1 col-end-4 row-start-2 mx-auto -mt-20 flex w-full max-w-[46rem] flex-col gap-4 sm:-mt-24 sm:gap-5 lg:-mt-20 lg:max-w-[58rem] lg:px-2;
+  }
+
+  .hero-title {
+    @apply font-display font-extrabold uppercase leading-[0.95] tracking-tighter text-white;
+  }
+
+  .hero-title-1 {
+    @apply block text-[1.7rem] leading-[0.94] text-white/95 sm:text-5xl lg:text-6xl xl:text-7xl;
+  }
+
+  .hero-title-2 {
+    @apply my-1 block text-[2.45rem] leading-[0.88] text-accent text-glow sm:text-7xl lg:my-3 lg:text-8xl xl:text-9xl;
+  }
+
+  .hero-title-3 {
+    @apply mt-4 block max-w-[9.25rem] text-[0.82rem] font-medium leading-[1.22] text-white/90 sm:max-w-[17rem] sm:text-2xl lg:max-w-[21rem] lg:text-3xl;
+  }
+
+  .hero-title-4 {
+    @apply mt-2 block text-[0.82rem] font-medium leading-[1.1] text-white/90 sm:text-2xl lg:text-3xl;
+  }
+
+  .hero-rule {
+    @apply mt-6 h-1 w-20 rounded-full bg-accent shadow-[0_0_24px_rgba(31,123,255,0.85)] sm:mt-9 sm:w-28;
+  }
+
+  .hero-rule-right {
+    @apply mt-6;
+  }
+
+  .hero-motivational {
+    @apply font-display text-[1.08rem] font-extrabold uppercase leading-[1.08] tracking-tighter text-white/90 sm:text-4xl lg:text-5xl xl:text-6xl;
+  }
+
+  .hero-motivational span + span {
+    @apply mt-3 sm:mt-6;
+  }
+
+  .hero-motivational-sub {
+    @apply mt-5 max-w-[8.6rem] text-pretty text-[0.72rem] leading-relaxed text-white/70 sm:max-w-[17rem] sm:text-xl lg:max-w-[22rem] lg:text-2xl;
+  }
+
+  .hero-photo {
+    @apply relative z-10 mx-auto block h-[63svh] min-h-[500px] w-auto max-w-none translate-y-24 object-contain object-bottom drop-shadow-[0_34px_70px_rgba(31,123,255,0.54)] sm:h-[74svh] sm:min-h-[660px] sm:translate-y-24 lg:h-[86svh] lg:min-h-[740px] lg:translate-y-0 xl:h-[90svh] xl:min-h-[820px];
+  }
+
+  .hero-glow {
+    @apply pointer-events-none absolute left-1/2 top-[48%] -z-10 h-[420px] w-[340px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent/40 blur-[72px] sm:h-[620px] sm:w-[520px] sm:blur-[92px] lg:h-[740px] lg:w-[620px] lg:blur-[110px];
+  }
+
+  .hero-photo-shield {
+    @apply pointer-events-none absolute left-1/2 top-[48%] z-0 h-[470px] w-[300px] -translate-x-1/2 -translate-y-[40%] rounded-[45%] bg-[radial-gradient(ellipse_at_center,rgba(5,8,16,0.96)_0%,rgba(5,8,16,0.86)_46%,rgba(5,8,16,0.2)_76%,transparent_100%)] sm:h-[620px] sm:w-[420px] lg:h-[720px] lg:w-[500px];
+  }
+
+  .hero-fade-bottom {
+    @apply pointer-events-none absolute inset-x-[-12vw] bottom-0 z-20 h-32 bg-gradient-to-b from-transparent via-[rgba(5,8,16,0.45)] to-bg-deep sm:h-40 lg:h-48;
+  }
+
+  .hero-cta-icon {
+    @apply flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl sm:h-20 sm:w-20;
+  }
+
+  .hero-cta-icon-stockity {
+    @apply bg-[rgba(5,8,16,0.36)] text-cyan;
+  }
+
+  .hero-cta-icon-whatsapp {
+    @apply bg-[rgba(37,211,102,0.16)] text-[#25D366];
+  }
+
+  .hero-cta-arrow {
+    @apply text-white/85 transition-transform group-hover:translate-x-1;
+  }
+
+  .hero-audio-cue {
+    @apply mx-auto mt-14 inline-flex items-center justify-center gap-4 rounded-full text-[0.68rem] font-medium uppercase tracking-[0.22em] text-white/70 transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg sm:mt-20 sm:text-xs lg:mt-24;
+  }
+
+  .hero-audio-icon {
+    @apply grid h-16 w-16 place-items-center rounded-full border border-accent/40 bg-[rgba(5,8,16,0.58)] text-white shadow-[0_0_34px_-18px_rgba(31,123,255,0.95)] backdrop-blur-md sm:h-20 sm:w-20;
+  }
+
+  .hero-scroll-cue {
+    @apply pointer-events-none absolute inset-x-0 bottom-4 hidden justify-center sm:bottom-6 sm:flex;
+  }
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
+
   .text-pretty {
     text-wrap: pretty;
   }

@@ -6,38 +6,38 @@ const t = messages.nav;
 ---
 
 <header
-  class="fixed inset-x-0 top-0 z-50 border-b border-accent/15 bg-bg/72 shadow-[0_18px_60px_-36px_rgba(31,123,255,0.65)] backdrop-blur-xl"
+  class="fixed inset-x-0 top-0 z-50 border-b border-accent/25 bg-bg-deep/92 shadow-[0_22px_70px_-34px_rgba(31,123,255,0.85)] backdrop-blur-xl"
 >
   <nav
-    class="container-page flex h-24 items-center justify-between gap-3 sm:gap-6"
+    class="container-page flex h-24 items-center justify-between gap-3 sm:h-28 sm:gap-5"
     aria-label={t.accessibilityNav}
   >
     <a
       href="#top"
-      class="group flex min-w-0 items-center gap-3"
+      class="group flex min-w-0 items-center gap-3 sm:gap-4"
       aria-label={`${messages.site.name} - ${t.accessibilityHome}`}
     >
-      <span class="grid h-12 w-12 shrink-0 place-items-center rounded-full border border-accent/25 bg-surface/80 shadow-[0_0_34px_-16px_rgba(31,123,255,0.9)] transition-colors group-hover:border-accent/55">
+      <span class="grid h-14 w-14 shrink-0 place-items-center rounded-full border border-accent/30 bg-bg/80 shadow-[0_0_0_1px_rgba(31,123,255,0.08),0_0_44px_-18px_rgba(31,123,255,0.95)] transition-colors group-hover:border-accent/60 sm:h-16 sm:w-16">
         <img
           src="/logo.webp"
           alt={messages.site.name}
-          width="48"
-          height="48"
-          class="h-10 w-10 object-contain"
+          width="64"
+          height="64"
+          class="h-11 w-11 object-contain sm:h-12 sm:w-12"
           loading="eager"
         />
       </span>
-      <span class="hidden flex-col leading-tight sm:flex">
-        <span class="font-display text-base font-bold tracking-tighter text-ink transition-colors group-hover:text-accent-soft">
+      <span class="flex min-w-0 flex-col leading-tight">
+        <span class="font-display text-sm font-extrabold tracking-tighter text-ink transition-colors group-hover:text-accent-soft sm:text-xl">
           QUITOTRADER
         </span>
-        <span class="max-w-[168px] truncate text-[10px] uppercase tracking-[0.22em] text-muted">
+        <span class="mt-1 max-w-[132px] truncate text-[9px] uppercase tracking-[0.32em] text-ink/70 sm:max-w-none sm:text-xs">
           {messages.site.tagline}
         </span>
       </span>
     </a>
 
-    <ul class="hidden items-center gap-1 rounded-full border border-line/70 bg-surface/45 p-1 backdrop-blur-md md:flex">
+    <ul class="hidden items-center gap-1 rounded-full border border-line/70 bg-surface/40 p-1 backdrop-blur-md md:flex">
       <li>
         <a
           href="#sobre"
@@ -69,30 +69,34 @@ const t = messages.nav;
         href={messages.links.stockity}
         target="_blank"
         rel="noopener noreferrer"
-        class="hidden items-center gap-2 rounded-full border border-line/80 bg-surface/70 px-3 py-1.5 text-xs text-muted transition-colors hover:border-accent/60 hover:bg-accent/10 hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg lg:flex"
+        class="inline-flex h-12 items-center gap-2 rounded-full border border-line/80 bg-bg/50 px-3 text-sm font-extrabold text-ink shadow-[inset_0_0_0_1px_rgba(31,123,255,0.04),0_18px_48px_-30px_rgba(31,123,255,0.9)] transition-colors hover:border-accent/55 hover:bg-accent/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg sm:h-14 sm:px-5 sm:text-base"
         aria-label={messages.accessibility.altStockity}
       >
         <img
           src="/stockity.png"
           alt={messages.accessibility.altStockity}
-          class="h-5 w-auto object-contain"
+          class="h-5 w-5 object-contain sm:h-6 sm:w-6"
           loading="lazy"
-          width="60"
+          width="24"
+          height="24"
         />
-        <span class="font-medium">{t.parceria}</span>
+        <span>Stockity</span>
       </a>
-      <CTAButton short />
+
+      <span class="hidden lg:inline-flex">
+        <CTAButton short />
+      </span>
 
       <button
         id="menu-toggle"
         type="button"
-        class="inline-flex h-12 w-12 items-center justify-center rounded-full border border-line bg-surface/70 text-ink shadow-[0_10px_30px_-18px_rgba(31,123,255,0.8)] md:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
+        class="inline-flex h-12 w-12 items-center justify-center rounded-2xl border border-accent/40 bg-accent text-white shadow-[0_18px_44px_-16px_rgba(31,123,255,0.9)] transition-transform hover:scale-105 md:hidden sm:h-14 sm:w-14 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
         aria-label="Abrir menu"
         aria-expanded="false"
         aria-controls="mobile-menu"
       >
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-          <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M5 7h14M5 12h14M5 17h14" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" />
         </svg>
       </button>
     </div>
@@ -100,30 +104,30 @@ const t = messages.nav;
 
   <div
     id="mobile-menu"
-    class="hidden border-t border-accent/15 bg-bg/95 shadow-[0_24px_70px_-36px_rgba(31,123,255,0.7)] backdrop-blur-xl md:hidden"
+    class="hidden border-t border-accent/15 bg-bg-deep/96 shadow-[0_24px_70px_-36px_rgba(31,123,255,0.7)] backdrop-blur-xl md:hidden"
   >
     <nav class="container-page flex flex-col gap-1 py-4" aria-label="Menu mobile">
       <a
         href="#sobre"
-        class="rounded-lg px-3 py-2.5 text-sm font-medium text-muted transition-colors hover:bg-accent/10 hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+        class="rounded-xl px-3 py-3 text-sm font-semibold text-muted transition-colors hover:bg-accent/10 hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
       >
         {t.sobre}
       </a>
       <a
         href="#metodo"
-        class="rounded-lg px-3 py-2.5 text-sm font-medium text-muted transition-colors hover:bg-accent/10 hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+        class="rounded-xl px-3 py-3 text-sm font-semibold text-muted transition-colors hover:bg-accent/10 hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
       >
         {t.metodo}
       </a>
       <a
         href="#resultados"
-        class="rounded-lg px-3 py-2.5 text-sm font-medium text-muted transition-colors hover:bg-accent/10 hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+        class="rounded-xl px-3 py-3 text-sm font-semibold text-muted transition-colors hover:bg-accent/10 hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
       >
         {t.resultados}
       </a>
       <a
         href="#faq"
-        class="rounded-lg px-3 py-2.5 text-sm font-medium text-muted transition-colors hover:bg-accent/10 hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+        class="rounded-xl px-3 py-3 text-sm font-semibold text-muted transition-colors hover:bg-accent/10 hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
       >
         {messages.faq.title}
       </a>
