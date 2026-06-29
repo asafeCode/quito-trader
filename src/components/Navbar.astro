@@ -31,7 +31,7 @@ const t = messages.nav;
         <span class="font-display text-sm font-extrabold tracking-tighter text-ink transition-colors group-hover:text-accent-soft sm:text-xl">
           QUITOTRADER
         </span>
-        <span class="mt-1 max-w-[132px] truncate text-[9px] uppercase tracking-[0.32em] text-ink/70 sm:max-w-none sm:text-xs">
+        <span class="mt-1 whitespace-nowrap text-[8px] uppercase tracking-[0.22em] text-ink/70 sm:text-xs sm:tracking-[0.32em]">
           {messages.site.tagline}
         </span>
       </span>
@@ -69,18 +69,17 @@ const t = messages.nav;
         href={messages.links.stockity}
         target="_blank"
         rel="noopener noreferrer"
-        class="inline-flex h-12 items-center gap-2 rounded-full border border-line/80 bg-bg/50 px-3 text-sm font-extrabold text-ink shadow-[inset_0_0_0_1px_rgba(31,123,255,0.04),0_18px_48px_-30px_rgba(31,123,255,0.9)] transition-colors hover:border-accent/55 hover:bg-accent/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg sm:h-14 sm:px-5 sm:text-base"
+        class="inline-flex h-12 items-center justify-center rounded-full border border-line/80 bg-bg/50 px-4 text-sm font-extrabold text-ink shadow-[inset_0_0_0_1px_rgba(31,123,255,0.04),0_18px_48px_-30px_rgba(31,123,255,0.9)] transition-colors hover:border-accent/55 hover:bg-accent/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg sm:h-14 sm:px-5 sm:text-base"
         aria-label={messages.accessibility.altStockity}
       >
         <img
           src="/stockity.png"
           alt={messages.accessibility.altStockity}
-          class="h-5 w-5 object-contain sm:h-6 sm:w-6"
+          class="h-5 w-auto object-contain sm:h-6"
           loading="lazy"
           width="24"
           height="24"
         />
-        <span>Stockity</span>
       </a>
 
       <span class="hidden lg:inline-flex">

@@ -19,7 +19,7 @@
   type="button"
   aria-label="Ativar som de fundo"
   aria-pressed="false"
-  class="hidden"
+  class="fixed bottom-5 left-5 z-50 grid h-12 w-12 place-items-center rounded-full border border-accent/40 bg-[rgba(5,8,16,0.72)] text-white shadow-[0_0_34px_-18px_rgba(31,123,255,0.95)] backdrop-blur-md transition-all hover:border-accent/65 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
 >
   <svg
     id="icon-muted"
@@ -36,21 +36,12 @@
       stroke-linejoin="round"
     />
     <line
-      x1="22"
-      y1="9"
-      x2="16"
-      y2="15"
+      x1="20.5"
+      y1="4"
+      x2="3.5"
+      y2="20"
       stroke="currentColor"
-      stroke-width="2"
-      stroke-linecap="round"
-    />
-    <line
-      x1="16"
-      y1="9"
-      x2="22"
-      y2="15"
-      stroke="currentColor"
-      stroke-width="2"
+      stroke-width="2.2"
       stroke-linecap="round"
     />
   </svg>
@@ -87,7 +78,7 @@
 
   if (audio && btn && iconMuted && iconPlaying) {
     audio.volume = 0.10;
-    audio.muted = false;
+    audio.muted = true;
 
     const showPlaying = () => {
       iconMuted.classList.add("hidden");
@@ -101,27 +92,8 @@
       btn.setAttribute("aria-label", "Ativar som de fundo");
       btn.setAttribute("aria-pressed", "false");
     };
-    audio.play().then(showPlaying).catch(() => {
-      audio.muted = true;
-      showMuted();
-    });
-
-    const tryUnmute = () => {
-      if (audio.muted) {
-        audio.muted = false;
-        audio.play()
-          .then(showPlaying)
-          .catch(() => {});
-      }
-      document.removeEventListener("click", tryUnmute);
-      document.removeEventListener("scroll", tryUnmute);
-      document.removeEventListener("keydown", tryUnmute);
-      document.removeEventListener("touchstart", tryUnmute);
-    };
-    document.addEventListener("click", tryUnmute);
-    document.addEventListener("scroll", tryUnmute);
-    document.addEventListener("keydown", tryUnmute);
-    document.addEventListener("touchstart", tryUnmute);
+    showMuted();
+    audio.play().catch(() => {});
 
     btn.addEventListener("click", () => {
       if (audio.muted) {

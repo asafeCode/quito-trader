@@ -118,24 +118,6 @@ const t = messages.hero;
     </div>
 
     <div class="hero-below-cue">
-      <button
-        id="hero-audio-toggle"
-        type="button"
-        class="hero-audio-cue"
-        aria-label="Ativar ou desativar som de fundo"
-      >
-        <span class="hero-audio-icon" aria-hidden="true">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-            <path d="M11 5L6 9H2v6h4l5 4V5z" stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
-            <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-          </svg>
-        </span>
-        <span class="relative flex h-2 w-2" aria-hidden="true">
-          <span class="absolute inset-0 animate-ping rounded-full bg-accent/60"></span>
-          <span class="relative inline-flex h-2 w-2 rounded-full bg-accent"></span>
-        </span>
-        <span>CLIQUE PARA O SOM</span>
-      </button>
       <a href="#hero-context" class="hero-scroll-arrow" aria-label="Rolar para ver mais">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
           <path d="M12 5v14M6 13l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
@@ -151,21 +133,3 @@ const t = messages.hero;
     <p>{t.motivationalSub}</p>
   </div>
 </section>
-
-<script>
-  const heroAudioBtn = document.getElementById("hero-audio-toggle");
-  const bgAudio = document.getElementById("bg-audio") as HTMLAudioElement | null;
-  const globalAudioBtn = document.getElementById("audio-toggle") as HTMLButtonElement | null;
-
-  heroAudioBtn?.addEventListener("click", () => {
-    if (globalAudioBtn) {
-      globalAudioBtn.click();
-      return;
-    }
-
-    if (bgAudio) {
-      bgAudio.muted = !bgAudio.muted;
-      if (!bgAudio.muted) bgAudio.play().catch(() => {});
-    }
-  });
-</script>
