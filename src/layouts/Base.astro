@@ -28,7 +28,7 @@ const jsonLd = [
     jobTitle: "Trader e Mentor",
     description: description,
     knowsAbout: ["Price Action", "Mini Índice", "Mini Dólar", "Forex", "Cripto"],
-    sameAs: [messages.links.linktree],
+    sameAs: [messages.links.telegram],
   },
   {
     "@context": "https://schema.org",
@@ -314,10 +314,10 @@ const jsonLd = [
     if (!link) return;
     const href = link.getAttribute("href") || "";
     const label = (link.textContent || "").trim() || link.getAttribute("aria-label") || "";
-    if (href.includes("stockity.com")) {
+    if (href.includes("/cadastro") || href.includes("stockity.com")) {
       track("click_cta", { cta: "stockity", label });
-    } else if (href.includes("linktr.ee") || href.includes("wa.me") || href.includes("whatsapp")) {
-      track("click_cta", { cta: "whatsapp", label });
+    } else if (href.includes("/grupo") || href.includes("t.me") || href.includes("telegram")) {
+      track("click_cta", { cta: "telegram", label });
     } else if (href.startsWith("#")) {
       track("click_nav", { target: href });
     }

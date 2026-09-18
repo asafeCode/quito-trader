@@ -4,15 +4,15 @@ export const ptBR = {
     tagline: "Price Action Raiz",
   },
   links: {
-    stockity: "https://stockity.com/pt?a=e7423aaac917&t=0",
-    linktree: "https://linktr.ee/aguavivaembo",
+    stockity: "https://quitomembros.site/cadastro",
+    telegram: "https://quitomembros.site/grupo",
   },
   cta: {
     primaryLabel: "Abrir conta na Stockity",
     primaryLabelLg: "Quero abrir conta na Stockity",
-    secondaryLabel: "Conversar no WhatsApp",
+    secondaryLabel: "Entrar no grupo do Telegram",
     shortPrimaryLabel: "Abrir conta",
-    shortSecondaryLabel: "WhatsApp",
+    shortSecondaryLabel: "Telegram",
     microcopy: "100% gratuito · sem cartão · 1 minuto",
   },
   badges: {
@@ -61,8 +61,8 @@ export const ptBR = {
       "Entre para o ambiente que conecta traders sérios, com análise ao vivo, acompanhamento e método validado no mercado real.",
     primaryCta: "QUERO OPERAR NA STOCKITY",
     primaryCtaSub: "ABRA SUA CONTA E FAÇA PARTE",
-    secondaryCta: "FALAR NO WHATSAPP",
-    secondaryCtaSub: "TIRE SUAS DÚVIDAS AGORA",
+    secondaryCta: "ENTRAR NO TELEGRAM",
+    secondaryCtaSub: "ENTRE NO GRUPO AGORA",
     kpis: [
       { label: "Experiência", value: "+10", suffix: "anos" },
       { label: "Mercados", value: "5", suffix: "ativos" },
@@ -285,7 +285,7 @@ export const ptBR = {
     note:
       "Conteúdo educacional. Não constitui recomendação individual de investimento.",
     primary: "Abrir conta na Stockity",
-    secondary: "Falar no WhatsApp",
+    secondary: "Entrar no grupo do Telegram",
   },
   stickyCta: {
     label: "Abrir conta na Stockity",
@@ -296,7 +296,7 @@ export const ptBR = {
     navHeading: "Navegação",
     contactHeading: "Contato",
     links: {
-      whatsapp: "WhatsApp · Linktree",
+      telegram: "Grupo no Telegram",
       stockity: "Corretora Stockity",
     },
     disclaimer:

@@ -138,12 +138,53 @@
     text-shadow: 0 0 24px rgba(0, 212, 255, 0.55);
   }
 
-  .btn-whatsapp {
-    @apply mx-auto inline-flex w-[82%] max-w-[18.6rem] items-center gap-3 rounded-[1.05rem] border border-line/80 bg-[rgba(5,8,16,0.72)] px-3.5 py-2 text-left text-ink shadow-[0_20px_52px_-34px_rgba(31,123,255,0.75)] backdrop-blur-md transition-all duration-300 hover:border-[#25D366]/70 hover:bg-[#25D366]/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#25D366] focus-visible:ring-offset-2 focus-visible:ring-offset-bg min-[390px]:gap-3.5 sm:w-[82%] sm:max-w-[18.6rem] sm:rounded-[1.05rem] sm:px-3.5 sm:py-2 lg:flex-1 lg:w-full lg:max-w-none lg:rounded-[1.7rem] lg:px-5 lg:py-3.5;
+  .btn-telegram {
+    @apply relative isolate mx-auto inline-flex w-full max-w-none items-center gap-3 overflow-hidden rounded-[1.05rem] border border-[#7FD4F7]/70 bg-gradient-to-r from-[#1B87C9] via-[#2AABEE] to-[#3FC1F5] px-3.5 py-2 text-left text-white transition-all duration-300 hover:scale-[1.02] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2AABEE] focus-visible:ring-offset-2 focus-visible:ring-offset-bg min-[390px]:gap-3.5 sm:w-full sm:max-w-none sm:rounded-[1.05rem] sm:px-4 sm:py-2.5 lg:w-full lg:min-w-0 lg:max-w-none lg:flex-[1_1_0%] lg:rounded-[1.7rem] lg:px-5 lg:py-3.5;
+    box-shadow:
+      0 0 0 1px rgba(127, 212, 247, 0.45),
+      0 18px 56px -20px rgba(42, 171, 238, 0.95);
+    animation: telegram-pulse 2.6s ease-in-out infinite;
+  }
+
+  .btn-telegram:hover {
+    box-shadow:
+      0 0 0 1px rgba(127, 212, 247, 0.7),
+      0 24px 70px -18px rgba(42, 171, 238, 1);
+  }
+
+  .btn-telegram::after {
+    content: "";
+    @apply pointer-events-none absolute inset-y-0 z-[1] w-1/3;
+    left: -40%;
+    background: linear-gradient(
+      100deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.42) 50%,
+      transparent 100%
+    );
+    animation: telegram-shine 3.8s ease-in-out infinite;
+  }
+
+  @keyframes telegram-pulse {
+    0%, 100% {
+      box-shadow:
+        0 0 0 0 rgba(42, 171, 238, 0.55),
+        0 18px 56px -20px rgba(42, 171, 238, 0.95);
+    }
+    50% {
+      box-shadow:
+        0 0 0 10px rgba(42, 171, 238, 0),
+        0 18px 56px -20px rgba(42, 171, 238, 0.95);
+    }
+  }
+
+  @keyframes telegram-shine {
+    0% { left: -40%; }
+    55%, 100% { left: 125%; }
   }
 
   .btn-stockity {
-    @apply flex w-full items-center gap-3 rounded-[1.25rem] border border-cyan/80 bg-gradient-to-r from-[#0935ff] via-accent to-[#00a7ff] px-4 py-2.5 text-left text-white shadow-[0_0_0_1px_rgba(0,212,255,0.42),0_22px_70px_-18px_rgba(31,123,255,0.9)] transition-all duration-300 hover:scale-[1.015] hover:shadow-[0_0_0_1px_rgba(0,212,255,0.65),0_28px_82px_-18px_rgba(31,123,255,1)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan focus-visible:ring-offset-2 focus-visible:ring-offset-bg min-[390px]:gap-4 min-[390px]:px-5 sm:rounded-[1.25rem] sm:px-5 sm:py-2.5 lg:rounded-[1.7rem] lg:py-3.5;
+    @apply flex w-full items-center gap-3 rounded-[1.25rem] border border-cyan/80 lg:min-w-0 lg:flex-[1.15_1_0%] bg-gradient-to-r from-[#0935ff] via-accent to-[#00a7ff] px-4 py-2.5 text-left text-white shadow-[0_0_0_1px_rgba(0,212,255,0.42),0_22px_70px_-18px_rgba(31,123,255,0.9)] transition-all duration-300 hover:scale-[1.015] hover:shadow-[0_0_0_1px_rgba(0,212,255,0.65),0_28px_82px_-18px_rgba(31,123,255,1)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan focus-visible:ring-offset-2 focus-visible:ring-offset-bg min-[390px]:gap-4 min-[390px]:px-5 sm:rounded-[1.25rem] sm:px-5 sm:py-2.5 lg:rounded-[1.7rem] lg:py-3.5;
   }
 
   .hero-shell {
@@ -257,11 +298,11 @@
     @apply bg-[rgba(5,8,16,0.36)] text-cyan;
   }
 
-  .hero-cta-icon-whatsapp {
-    @apply bg-[rgba(37,211,102,0.16)] text-[#25D366];
+  .hero-cta-icon-telegram {
+    @apply bg-white text-[#1B87C9] shadow-[0_6px_18px_-8px_rgba(2,4,10,0.85)];
   }
 
-  .btn-whatsapp .hero-cta-icon {
+  .btn-telegram .hero-cta-icon {
     @apply h-12 w-12 min-[390px]:h-[3.25rem] min-[390px]:w-[3.25rem] sm:h-[3.25rem] sm:w-[3.25rem] lg:h-14 lg:w-14;
   }
 
